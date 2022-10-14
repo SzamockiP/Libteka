@@ -1,0 +1,202 @@
+<MyGrid>
+	GridLayout:
+		
+		cols: 1
+		size: root.width, root.height
+
+		GridLayout:
+			cols: 4
+			size: root.width, root.height
+			size_hint_y: 0.15
+
+			Button:
+				text: "Dodaj"
+				on_press: root.add_book()
+
+			Button:
+				text: "Usuń"
+				on_press: root.remove_book()
+
+			Button:
+				text: "Edytuj"
+				on_press: root.edit_book()
+
+			Button:
+				text: "Szukaj"
+				on_press: root.search_book()
+
+		Carousel:
+			id: carousel_kv
+			direction: "bottom"
+
+			Button:
+				text: "Kliknij aby załadować książki"
+				on_press: root.load_books()
+
+
+<add_book_popup>
+	
+	new_title: new_title
+	new_date: new_date
+	new_status: new_status
+	new_isbn: new_isbn
+
+	GridLayout:
+		cols: 1
+		size: root.width, root.height
+		size_hint: 0.8, 0.9
+		spacing: 10
+		pos_hint:{"x":0.1,"top":0.95}
+	
+		TextInput:
+			id: new_title
+			hint_text: "Tytuł: "
+			multiline: False
+			
+		TextInput:
+			id: new_date
+			hint_text: "Autor: "
+			multiline: False
+			
+		TextInput:
+			id: new_status
+			hint_text: "Status przeczytania: "
+			multiline: False
+
+		TextInput:
+			id: new_isbn
+			hint_text: "ISBN: "
+			multiline: False
+
+		Label:
+
+		AnchorLayout
+			anchor_x: "center"
+			anchor_y: "bottom"
+
+			Button:
+				text: "Dodaj"
+				size_hint_x: None
+				width: root.width / 5
+				on_release: root.add_book()
+
+
+<remove_book_popup>
+
+	book_number: book_number
+
+	GridLayout:
+		cols: 1
+		size: root.width, root.height
+		size_hint: 0.8, 0.9
+		spacing: 10
+		pos_hint:{"x":0.1,"top":0.95}
+
+		TextInput:
+			id: book_number
+			hint_text: "Numer książki: "
+			multiline: False
+
+		Label:
+
+		Label:
+
+		Label:
+
+		Label:
+
+		AnchorLayout
+			anchor_x: "center"
+			anchor_y: "bottom"
+
+			Button:
+				text: "Usuń"
+				size_hint_x: None
+				width: root.width / 5
+				on_release: root.remove_book()
+
+
+<edit_book_popup>
+
+	book_number: book_number
+	new_title: new_title
+	new_date: new_date
+	new_status: new_status
+	new_isbn: new_isbn
+
+	GridLayout:
+		cols: 1
+		size: root.width, root.height
+		size_hint: 0.8, 0.9
+		spacing: 10
+		pos_hint:{"x":0.1,"top":0.95}
+
+		TextInput:
+			id: book_number
+			hint_text: "Numer książki: "
+			multiline: False
+			
+		TextInput:
+			id: new_title
+			hint_text: "Tytuł: "
+			multiline: False
+			
+		TextInput:
+			id: new_date
+			hint_text: "Autor: "
+			multiline: False
+			
+		TextInput:
+			id: new_status
+			hint_text: "Status przeczytania: "
+			multiline: False
+
+		TextInput:
+			id: new_isbn
+			hint_text: "ISBN: "
+			multiline: False
+
+		AnchorLayout
+			anchor_x: "center"
+			anchor_y: "bottom"
+
+			Button:
+				text: "Edytuj"
+				size_hint_x: None
+				width: root.width / 5
+				on_release: root.edit_book()
+
+
+<search_book_popup>
+
+	searched_phrase: searched_phrase
+
+	GridLayout:
+		cols: 1
+		size: root.width, root.height
+		size_hint: 0.8, 0.9
+		spacing: 10
+		pos_hint:{"x":0.1,"top":0.95}
+
+		TextInput:
+			id: searched_phrase
+			hint_text: "Szukana fraza: "
+			multiline: False
+
+		Label:
+
+		Label:
+
+		Label:
+
+		Label:
+		
+		AnchorLayout
+			anchor_x: "center"
+			anchor_y: "bottom"
+
+			Button:
+				text: "Szukaj"
+				size_hint_x: None
+				width: root.width / 5
+				on_release: root.search_book()
